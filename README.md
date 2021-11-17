@@ -27,4 +27,4 @@ Node classification and community detection:
 python main.py --task NC --dataset cora --mode basemodel --model HCGNN --layer_num 2 --epoch_num 201 --lr 0.01 --relu True --dropout False --drop_ratio 0.5 --same_level_gnn GCN --down2up_gnn MEAN --up2down_gnn GCN --fshot True --SEED 1234 --gpu True
 ``` 
 
- 
+Two demo file is given to show the execution of link prediction (LP) and node classification (NC) tasks.
