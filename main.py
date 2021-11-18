@@ -1,9 +1,7 @@
-import numpy as np
-import random
 import torch
 import argparse
-import sys
 
+from utils import seed_everything
 from dataset import get_dataset
 from community_detection import hierarchical_structure_generation
 from execution import execute_NC, execute_LP
@@ -59,10 +57,9 @@ parser.add_argument('--fshot', dest='fshot', default=False, type=bool)
 parser.set_defaults(gpu=False, task='LP', model='GCN', dataset='grid', feature_pre=True)
 args = parser.parse_args()
 
-SEED = args.SEED
-np.random.seed(SEED)
-random.seed(SEED)
-device = torch.device('cuda:'+str(0) if args.gpu and torch.cuda.is_available() else 'cpu')
+args.device = torch.device('cuda:'+str(0) if args.gpu and torch.cuda.is_available() else 'cpu')
+seed_everything(args.SEED)
+print(args, '\n')
 
 
 if args.task == 'LP':
@@ -70,7 +67,7 @@ if args.task == 'LP':
         dataset_name=args.dataset,
         use_features=args.use_features,
         task=args.task,
-        ratio_sample_pos=args.ratio_sample_pos
+        ratio_sample=args.ratio_sample_pos_link
     )
     ls_hierarchical_community, ls_up2down_edges, ls_down2up_edges = hierarchical_structure_generation(
         dataset_name=args.dataset,
@@ -88,14 +85,13 @@ if args.task == 'LP':
     execute_LP(
         args, graphs, features, ls_hierarchical_community,
         ls_adj_same_level, ls_up2down_edges, ls_down2up_edges,
-        ls_df_train, ls_df_valid, ls_df_test, device
+        ls_df_train, ls_df_valid, ls_df_test
     )
 else:
-    graphs, ls_train_nodes, ls_valid_nodes, ls_test_nodes, features, df_labels = get_dataset(
+    graphs, features, df_labels = get_dataset(
         dataset_name=args.dataset,
         use_features=args.use_features,
         task=args.task,
-        ratio_sample_pos=args.ratio_sample_pos
     )
     ls_hierarchical_community, ls_up2down_edges, ls_down2up_edges = hierarchical_structure_generation(
         dataset_name=args.dataset,
@@ -110,5 +106,4 @@ else:
     execute_NC(
         args, graphs, df_labels, features, ls_hierarchical_community,
         ls_adj_same_level, ls_up2down_edges, ls_down2up_edges,
-        ls_train_nodes, ls_valid_nodes, ls_test_nodes, device
     )
