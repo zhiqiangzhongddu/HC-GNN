@@ -48,3 +48,20 @@ Model hyper-parameters:
 ```
 
 Two demo file is given to show the execution of link prediction (LP) and node classification (NC) tasks.
+
+## Cite
+
+Please cite our paper if it is helpful in your own work:
+
+```
+@article{ZLP23,
+author = {Zhiqiang Zhong and Cheng{-}Te Li and Jun Pang},
+title = {Hierarchical Message-Passing Graph Neural Networks},
+journal = {Data Mining and Knowledge Discovery (DMKD)},
+volume = {37},
+number = {1},
+pages = {381--408},
+publisher = {Springer},
+year = {2023},
+}
+```
