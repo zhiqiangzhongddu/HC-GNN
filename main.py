@@ -67,7 +67,7 @@ if args.task == 'LP':
         dataset_name=args.dataset,
         use_features=args.use_features,
         task=args.task,
-        ratio_sample=args.ratio_sample_pos_link
+        ratio_sample=args.ratio_sample_pos
     )
     ls_hierarchical_community, ls_up2down_edges, ls_down2up_edges = hierarchical_structure_generation(
         dataset_name=args.dataset,
