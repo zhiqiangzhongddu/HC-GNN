@@ -53,7 +53,7 @@ Two demo file is given to show the execution of link prediction (LP) and node cl
 
 Please cite our paper if it is helpful in your own work:
 
-```
+```bibtex
 @article{ZLP23,
 author = {Zhiqiang Zhong and Cheng{-}Te Li and Jun Pang},
 title = {Hierarchical Message-Passing Graph Neural Networks},
