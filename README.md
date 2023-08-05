@@ -9,7 +9,7 @@ The code has been tested running under Python 3.7.3. with the following packages
 - pandas == 0.25.1
 - scikit-learn == 0.21.2
 - networkx == 2.3
-- community == 0.13
+- community (python-louvain) == 0.13
 - pytorch == 1.1.0
 - torch_geometric == 1.3.2
 
