@@ -1,6 +1,6 @@
 # Hierarchical Message-Passing Graph Neural Networks
 
-Implementation of the first implementation model (HC-GNN).
+Code of the first practical model (HC-GNN).
 
 ### Required packages
 The code has been tested running under Python 3.7.3. with the following packages installed (along with their dependencies):
