@@ -127,10 +127,10 @@ def get_dataset(dataset_name, use_features, task, ratio_sample: int = 0):
     
     elif dataset_name == 'emails':
         print('is reading {} dataset...'.format(dataset_name))
-        df = pd.read_csv('./data/email.txt', header=None, sep=' ', names=['source', 'target'])
+        df = pd.read_csv('./data/emails/email.txt', header=None, sep=' ', names=['source', 'target'])
         graph = nx.from_pandas_edgelist(df=df, source='source', target='target', edge_attr=None)
 
-        df_label = pd.read_csv('./data/email_labels.txt', header=None, sep=' ', names=['node_id', 'label'])
+        df_label = pd.read_csv('./data/emails/email_labels.txt', header=None, sep=' ', names=['node_id', 'label'])
         df_label = df_label[df_label['label'].isin(df_label['label'].value_counts()[df_label['label'].value_counts()>20].index)]
         available_nodes = df_label['node_id'].unique()
 
